@@ -4,14 +4,9 @@ import numpy as np
 from datetime import datetime
 from groq import Groq
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  GROQ API KEY - EMBEDDED
-# ══════════════════════════════════════════════════════════════════════════════
+
 GROQ_API_KEY = "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"
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  PAGE CONFIG
-# ══════════════════════════════════════════════════════════════════════════════
 st.set_page_config(
     page_title="StockMind AI",
     page_icon="⚡",
@@ -19,10 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  DATA & FORECASTING LOGIC
-# ══════════════════════════════════════════════════════════════════════════════
-CATEGORY_MARGINS = {
+
     "Grains": 0.12, "Pulses": 0.14, "Oils": 0.16, "Dairy": 0.18,
     "Spices": 0.25, "Condiments": 0.22, "Snacks": 0.28, "Breakfast": 0.20,
     "Bakery": 0.30, "Noodles": 0.24, "Soups": 0.26, "Beverages": 0.22,
@@ -161,10 +153,7 @@ def load_data():
     df["status"] = df.apply(get_status, axis=1)
     return df
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  CSS STYLING
-# ══════════════════════════════════════════════════════════════════════════════
-st.markdown("""
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -308,9 +297,7 @@ div[data-testid="stDataFrame"] {
 </style>
 """, unsafe_allow_html=True)
 
-# ══════════════════════════════════════════════════════════════════════════════
-#  AI CLIENT
-# ══════════════════════════════════════════════════════════════════════════════
+
 @st.cache_resource
 def get_client():
     return Groq(api_key=GROQ_API_KEY)
@@ -360,11 +347,7 @@ def ask_ai(client, messages, prompt):
             max_tokens=1500)
         return r.choices[0].message.content
     except Exception as e:
-        return f"⚠️ AI error: {str(e)}"
-
-# ══════════════════════════════════════════════════════════════════════════════
-#  SIDEBAR
-# ══════════════════════════════════════════════════════════════════════════════
+        return f"⚠️ AI error: {str(
 def render_sidebar(df):
     with st.sidebar:
         st.markdown("""
@@ -477,11 +460,7 @@ def render_sidebar(df):
             <span style='color:#4b5563;'>Free · Fast · Private</span>
           </div>
         </div>
-        """, unsafe_allow_html=True)
-
-# ══════════════════════════════════════════════════════════════════════════════
-#  MAIN APP
-# ══════════════════════════════════════════════════════════════════════════════
+        """, unsafe_allow_html=T
 def main():
     df = load_data()
     client = get_client()
