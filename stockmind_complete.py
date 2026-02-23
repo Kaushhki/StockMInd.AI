@@ -154,6 +154,7 @@ def load_data():
     return df
 
 
+st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -347,7 +348,8 @@ def ask_ai(client, messages, prompt):
             max_tokens=1500)
         return r.choices[0].message.content
     except Exception as e:
-        return f"⚠️ AI error: {str(
+        return f"⚠️ AI error: {str(e)}"
+
 def render_sidebar(df):
     with st.sidebar:
         st.markdown("""
@@ -460,7 +462,8 @@ def render_sidebar(df):
             <span style='color:#4b5563;'>Free · Fast · Private</span>
           </div>
         </div>
-        """, unsafe_allow_html=T
+        """, unsafe_allow_html=True)
+
 def main():
     df = load_data()
     client = get_client()
