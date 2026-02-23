@@ -14,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-
+CATEGORY_MARGINS={
     "Grains": 0.12, "Pulses": 0.14, "Oils": 0.16, "Dairy": 0.18,
     "Spices": 0.25, "Condiments": 0.22, "Snacks": 0.28, "Breakfast": 0.20,
     "Bakery": 0.30, "Noodles": 0.24, "Soups": 0.26, "Beverages": 0.22,
