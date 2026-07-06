@@ -1,0 +1,6 @@
+pandas
+rich
+schedule
+groq
+python-dotenv
+streamlit
