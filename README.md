@@ -2,6 +2,9 @@
 
 An automated inventory forecasting and management agent that predicts stockouts, calculates optimal reorder quantities, and provides AI-powered insights through a conversational interface.
 
+## Live Demo
+https://stockmindai-inventory-agent.streamlit.app
+
 ## Overview
 
 StockMind AI analyzes inventory data to identify products at risk of stocking out, recommends when and how much to reorder using an EOQ (Economic Order Quantity) model, and highlights profit opportunities. It is available both as a terminal-based automation agent and as a full web dashboard with a real-time AI chat assistant.
