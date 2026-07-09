@@ -1,15 +1,4 @@
-"""
-agent.py
-The presentation + orchestration layer. Renders the CLI dashboard with
-Rich, exports daily reports to CSV, and runs the whole thing on an
-automated daily schedule using the `schedule` library.
 
-Run once immediately:
-    python agent.py --once
-
-Run continuously on a daily schedule (default 08:00):
-    python agent.py --daily-at 08:00
-"""
 
 import argparse
 import time
@@ -154,8 +143,8 @@ def run_scheduled(daily_at: str, csv_path=None):
     console.print(f"[bold]Scheduler started[/bold] — running daily at {daily_at}. Press Ctrl+C to stop.")
     schedule.every().day.at(daily_at).do(run_agent, csv_path=csv_path)
 
-    # Run once immediately so you don't have to wait until the scheduled
-    # time to see the first report.
+    
+
     run_agent(csv_path)
 
     while True:
