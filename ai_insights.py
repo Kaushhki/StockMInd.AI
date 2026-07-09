@@ -1,10 +1,5 @@
-"""
-ai_insights.py
-Uses Groq's API to turn the raw forecasting/alerts numbers into a short,
-plain-English briefing — the "AI" part of StockMind AI. Kept in its own
-module so the rest of the app (forecasting, alerts, CLI dashboard) works
-perfectly fine even if this fails or the API key isn't set.
-"""
+
+
 
 import os
 from groq import Groq
@@ -18,9 +13,8 @@ MODEL = "openai/gpt-oss-120b"  # current Groq model; update if Groq deprecates i
 def _get_client():
     api_key = os.environ.get("GROQ_API_KEY")
 
-    # When deployed on Streamlit Community Cloud, secrets are provided
-    # via st.secrets rather than a .env file. Fall back to that if the
-    # env var isn't set and streamlit is available.
+    
+
     if not api_key:
         try:
             import streamlit as st
