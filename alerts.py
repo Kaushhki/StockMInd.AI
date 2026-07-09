@@ -1,10 +1,5 @@
-"""
-alerts.py
-Turns a forecasted inventory DataFrame into actionable alert groups:
-critical stockouts, upcoming reorders, overstock risk, and cost/profit
-summaries. Kept independent of any presentation layer so it can be
-tested or reused (e.g. from a web API) without pulling in Rich or CLI code.
-"""
+
+
 
 import pandas as pd
 
