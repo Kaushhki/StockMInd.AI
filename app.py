@@ -1,13 +1,5 @@
-"""
-app.py
-The web GUI for StockMind AI. This is purely a presentation layer — all
-the actual forecasting math lives in forecasting.py, alert logic in
-alerts.py, and AI calls in ai_insights.py. This file just wires them
-together into a Streamlit dashboard with a real chat interface.
 
-Run with:
-    streamlit run app.py
-"""
+
 
 import streamlit as st
 import uuid
@@ -25,9 +17,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ---------------------------------------------------------------------
-# Styling (dark theme)
-# ---------------------------------------------------------------------
+
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -114,9 +105,8 @@ div[data-testid="stDataFrame"] {
 """, unsafe_allow_html=True)
 
 
-# ---------------------------------------------------------------------
-# Data loading (cached, with a manual refresh button for "real-time")
-# ---------------------------------------------------------------------
+
+
 @st.cache_data(ttl=60, show_spinner=False)
 def _load_and_report(file_bytes):
     """Cached on the raw file bytes (or None for the bundled sample
@@ -282,7 +272,7 @@ def main():
         "📋  FULL INVENTORY", "📈  TRENDS",
     ])
 
-    # ---------------- TAB 1: CHAT ----------------
+    
     with tab1:
         if not st.session_state.messages:
             st.markdown(f"""
@@ -327,7 +317,7 @@ def main():
             handle_question(user_input)
             st.rerun()
 
-    # ---------------- TAB 2: CRITICAL ALERTS ----------------
+    
     with tab2:
         cdf, rdf = report["critical"], report["reorder"]
         if cdf.empty:
@@ -354,7 +344,7 @@ def main():
             d2["Days Left"] = d2["Days Left"].round(1)
             st.dataframe(d2, use_container_width=True, hide_index=True)
 
-    # ---------------- TAB 3: PROFIT ANALYSIS ----------------
+   
     with tab3:
         c1, c2 = st.columns(2)
         with c1:
@@ -374,7 +364,7 @@ def main():
                 ov.columns = ["Product", "Category", "Stock", "Unit", "Days Cover"]
                 st.dataframe(ov, use_container_width=True, hide_index=True)
 
-    # ---------------- TAB 4: FULL INVENTORY ----------------
+    
     with tab4:
         fc, sc = st.columns([3, 1])
         sel_cat = fc.selectbox("Category", ["All"] + sorted(df["category"].unique().tolist()))
@@ -394,7 +384,7 @@ def main():
         st.dataframe(show, use_container_width=True, hide_index=True)
         st.caption(f"Showing {len(show)} of {len(df)} products")
 
-    # ---------------- TAB 5: TRENDS ----------------
+    
     with tab5:
         history = db.get_snapshot_history(limit=500)
         if len(history) < 2:
