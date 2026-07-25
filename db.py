@@ -71,8 +71,8 @@ def clear_chat_history(session_id: str):
 
 
 def save_snapshot(summary: dict):
-    """Records a point-in-time snapshot of the inventory summary, so
-    trends can be charted over multiple runs/days."""
+    
+
     conn = get_connection()
     conn.execute("""
         INSERT INTO snapshots (
