@@ -1,17 +1,4 @@
-"""
-db.py
-Lightweight SQLite persistence layer. Stores:
-  - chat history, so conversations survive a page refresh / app restart
-  - inventory snapshots over time, so trends (e.g. "how did critical
-    count change this week") can be tracked rather than only ever
-    showing a single live moment.
 
-SQLite is used deliberately here instead of a heavier database — it's
-a single file (stockmind.db), needs no separate server process, and is
-genuinely appropriate for a single-store/single-user inventory tool.
-Swapping this for Postgres later would only require changing the
-connection logic in this file; nothing else in the app depends on it.
-"""
 
 import sqlite3
 import json
