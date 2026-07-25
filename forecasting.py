@@ -1,13 +1,4 @@
-"""
-forecasting.py
-Handles all forecasting logic: loading inventory data, calculating days
-until stockout, and computing EOQ-style optimal reorder quantities.
 
-Data is no longer hardcoded in this file. By default it loads from
-data/sample_inventory.csv, but load_data() also accepts a file path or
-a file-like object (e.g. from a Streamlit file uploader), so the app
-works with any real inventory export that matches the expected columns.
-"""
 
 import math
 from pathlib import Path
@@ -59,14 +50,8 @@ def _validate_columns(df: pd.DataFrame):
 
 
 def load_data(source=None) -> pd.DataFrame:
-    """
-    Loads inventory data and enriches it with all forecasting columns.
+    
 
-    `source` can be:
-      - None: loads the bundled sample dataset (data/sample_inventory.csv)
-      - a file path (str or Path) to a CSV file
-      - a file-like object, e.g. a Streamlit UploadedFile from st.file_uploader
-    """
     if source is None:
         source = DEFAULT_DATA_PATH
 
