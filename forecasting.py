@@ -14,7 +14,7 @@ CATEGORY_MARGINS = {
 }
 DEFAULT_MARGIN = 0.20
 
-# Assumptions used for the EOQ (Economic Order Quantity) formula.
+
 ORDERING_COST = 50
 HOLDING_RATE = 0.20
 
