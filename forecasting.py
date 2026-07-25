@@ -28,9 +28,8 @@ REQUIRED_COLUMNS = {
 
 
 class InventoryDataError(ValueError):
-    """Raised when uploaded/loaded inventory data doesn't match the
-    expected schema, so callers can show a clear message instead of a
-    confusing pandas traceback."""
+    
+
     pass
 
 
